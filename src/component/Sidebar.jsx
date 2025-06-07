@@ -30,21 +30,21 @@ function Sidebar () {
         <aside className="w-64 h-screen bg-white shadow-md border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between">
             <div className="space-y-8">
 
-                <div className="h-[100px] flex items-center pl-3">
+                <div className="h-[100px] flex items-center px-3 pt-6">
                     <img src={logo} alt="Finsum logo" className="h-8 w-auto" />
                 </div>
 
-                <div className="flex-1 space-y-6">
+                <nav className="flex-1 space-y-6">
                     <NavItem to="/persona" label="Persona" icon={PersonaIcon} />
                     <NavItem to="/dashboard" label="Dashboard" icon={DashboardIcon} />
                     <NavItem to="/portfolio" label="Portfolio" icon={PortfolioIcon} />
                     <NavItem to="/market" label="Market" icon={MarketIcon} />
                     <NavItem to="/life-events" label="Life Events" icon={LifeEventsIcon} />
                     <NavItem to="/leaderboard" label="Leaderboard" icon={LeaderboardIcon} />
-                </div>
+                </nav>
             </div>
             
-            <div className="">
+            <div className="mt-auto pt-6">
                 <NavItem to="/logout" label="Logout" icon={LogoutIcon} />
             </div>
         </aside>
