@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from '../Assests/Frame 27.png'
 import PersonaIcon from '../Assests/icons/user-square.png';
 import DashboardIcon from '../Assests/icons/material-symbols_dashboard-outline.png';
 import PortfolioIcon from '../Assests/icons/bytesize_portfolio.png';
@@ -26,16 +27,23 @@ function NavItem ({ to, label, icon }) {
 
 function Sidebar () {
     return (
-        <aside className="w-64 h-[calc(100vh-100px)] bg-white border-r border-gray-200 p-6 hidden md:flex flex-col justify-between">
-            <div className="flex-1 space-y-6">
-                <NavItem to="/persona" label="Persona" icon={PersonaIcon} />
-                <NavItem to="/dashboard" label="Dashboard" icon={DashboardIcon} />
-                <NavItem to="/portfolio" label="Portfolio" icon={PortfolioIcon} />
-                <NavItem to="/market" label="Market" icon={MarketIcon} />
-                <NavItem to="/life-events" label="Life Events" icon={LifeEventsIcon} />
-                <NavItem to="/leaderboard" label="Leaderboard" icon={LeaderboardIcon} />
-            </div>
+        <aside className="w-64 h-screen bg-white shadow-md border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between">
+            <div className="space-y-8">
 
+                <div className="h-[100px] flex items-center pl-3">
+                    <img src={logo} alt="Finsum logo" className="h-8 w-auto" />
+                </div>
+
+                <div className="flex-1 space-y-6">
+                    <NavItem to="/persona" label="Persona" icon={PersonaIcon} />
+                    <NavItem to="/dashboard" label="Dashboard" icon={DashboardIcon} />
+                    <NavItem to="/portfolio" label="Portfolio" icon={PortfolioIcon} />
+                    <NavItem to="/market" label="Market" icon={MarketIcon} />
+                    <NavItem to="/life-events" label="Life Events" icon={LifeEventsIcon} />
+                    <NavItem to="/leaderboard" label="Leaderboard" icon={LeaderboardIcon} />
+                </div>
+            </div>
+            
             <div className="">
                 <NavItem to="/logout" label="Logout" icon={LogoutIcon} />
             </div>

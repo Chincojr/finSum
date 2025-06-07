@@ -6,11 +6,11 @@ import avatar from '../Assests/Rectangle (1).png'
 
 function Navbar() {
     return (
-        <nav className="h-[100px] bg-white shadow-md px-6 flex items-center justify-between ">
-            <Link to="/Dashboard">
-                <img src={logo} alt="Finsum logo" className="h-10 w-auto transition-transform duration-200 group-hover:scale-105" />
-            </Link>
-
+        <nav className="h-[100px] shadow-md relative bg-white  px-6 flex items-center justify-end " 
+            style={{
+                boxShadow: 
+                    'inset 10px 0 8px -10px white, 4px 4px 6px rgba(0, 0, 0, 0.1)',
+            }}>
             <div className="flex items-center space-x-6">
                 <button className="relative text-gray-600 hover:text-gray-800 focus:outline-none">
                     <Bell className="h-6 w-6"/>
