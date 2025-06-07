@@ -4,9 +4,12 @@ import Sidebar from "../component/Sidebar";
 
 function Dashboard() {
     return (
-        <div className="min-h-screen bg-gray-50">
-            <Navbar/>   
-            <Sidebar/>     
+        <div className="flex h-screen">
+            <Sidebar/>
+
+            <div className="flex flex-col flex-1">
+                <Navbar/>
+            </div>
         </div>
     )
 }
