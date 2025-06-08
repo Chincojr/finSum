@@ -34,7 +34,7 @@ function Sidebar () {
                     <img src={logo} alt="Finsum logo" className="h-8 w-auto" />
                 </div>
 
-                <nav className="flex-1 space-y-6">
+                <nav className="flex-1 space-y-7 pt-3">
                     <NavItem to="/persona" label="Persona" icon={PersonaIcon} />
                     <NavItem to="/dashboard" label="Dashboard" icon={DashboardIcon} />
                     <NavItem to="/portfolio" label="Portfolio" icon={PortfolioIcon} />
