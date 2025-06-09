@@ -14,7 +14,6 @@ function PersonaPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Using mock data instead of real backend API
     useEffect(() => {
         const mockData = {
             name: "Adesare Olugbagi",
@@ -61,6 +60,7 @@ function PersonaPage() {
                         {/* Purple fading background on the left */}
                         <div className="absolute left-0 top-0 w-[20%] h-full bg-gradient-to-r from-[#ddcae3] to-transparent z-0" />
 
+                        {/* #ddcae3 */}
                         {/* Main content layered above the background */}
                         <div className="relative flex flex-col md:flex-row z-10">
                             {/* Left: Avatar and Persona Info */}
@@ -101,12 +101,12 @@ function PersonaPage() {
                             <div className="flex flex-col gap-4 w-[50%] justify-evenly p-6 font-poppins">
                                 <p className="text-gray-400 font-poppins font-normal text-sm">Stats</p>
                                 <div className="flex gap-3">
-                                <div className="bg-green-100 p-6 rounded-lg w-full">
+                                <div className="bg-[#C7FFA5] p-6 rounded-lg w-full">
                                     <p className="text-lg font-semibold">NGN {personaData.income}</p>
                                     <div className="flex w-[100%] flex-col items-end">
                                     <div className="flex">
                                         <img src={ArrowDown} alt="Arrow" />
-                                        <p className="text-sm mt-2 text-green-600">Income</p>
+                                        <p className="text-sm mt-2">Income</p>
                                     </div>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@ function PersonaPage() {
                                     <div className="flex w-[100%] flex-col items-end">
                                     <div className="flex">
                                         <img src={ArrowUp} alt="Arrow" />
-                                        <p className="text-sm mt-2 text-red-600">Expenses</p>
+                                        <p className="text-sm mt-2">Expenses</p>
                                     </div>
                                     </div>
                                 </div>
