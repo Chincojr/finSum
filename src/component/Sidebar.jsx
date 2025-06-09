@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from '../Assests/Frame 27.png'
-import PersonaIcon from '../Assests/icons/user-square.png';
-import DashboardIcon from '../Assests/icons/material-symbols_dashboard-outline.png';
-import PortfolioIcon from '../Assests/icons/bytesize_portfolio.png';
-import MarketIcon from '../Assests/icons/icon-park-outline_stock-market.png';
-import LifeEventsIcon from '../Assests/icons/receipt.png';
-import LeaderboardIcon from '../Assests/icons/cup.png';
-import LogoutIcon from '../Assests/icons/logout.png';
+import logo from '../Assests/Frame 27.svg'
+import PersonaIcon from '../Assests/icons/user-square.svg';
+import DashboardIcon from '../Assests/icons/material-symbols_dashboard-outline.svg';
+import PortfolioIcon from '../Assests/icons/bytesize_portfolio.svg';
+import MarketIcon from '../Assests/icons/icon-park-outline_stock-market.svg';
+import LifeEventsIcon from '../Assests/icons/receipt.svg';
+import LeaderboardIcon from '../Assests/icons/cup.svg';
+import LogoutIcon from '../Assests/icons/logout.svg';
 
 function NavItem ({ to, label, icon }) {
     return(
@@ -27,7 +27,7 @@ function NavItem ({ to, label, icon }) {
 
 function Sidebar () {
     return (
-        <aside className="w-64 h-screen bg-white shadow-md border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between">
+        <aside className="w-64 h-full bg-white border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between font-poppins">
             <div className="space-y-8">
 
                 <div className="h-[100px] flex items-center px-3 pt-6">
