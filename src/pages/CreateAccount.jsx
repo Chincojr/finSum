@@ -30,9 +30,10 @@ const CreateAccount = () => {
     setLoading(true);
 
     setTimeout(() => {
+      // Here is where the api will be called
       console.log(formData);
       return navigate('/completeSignUp');
-      setLoading(false);
+      
     }, 2000);
   };
 
@@ -64,10 +65,10 @@ const CreateAccount = () => {
             <div className="bg-white rounded-xl shadow-md p-8 border">
               {/* Step Progress */}
               <div className=" w-full inline-flex items-center mb-6 space-x-4 justify-center">
-                <div className="w-full text-4x1 text-indigo-600 font-medium border-b-2 border-indigo-600 pb-1">
+                <div className="w-full text-4x1 text-indigo-600 rounded font-medium border-b-4 border-indigo-600 pb-1">
                   Step 1
                 </div>
-                <div className=" w-full text-4x1 text-gray-400 rounded-r border-b-2 border-gray-300 pb-1">
+                <div className=" w-full text-4x1 text-gray-400 rounded border-b-4 border-gray-300 pb-1">
                   Step 2
                 </div>
               </div>

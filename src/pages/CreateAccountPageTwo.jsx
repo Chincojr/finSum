@@ -25,6 +25,9 @@ const CreateAccountPageTwo = () => {
       [e.target.name]: e.target.value,
     }));
   };
+   const onClick = () => {
+    return navigate('/')
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,9 +36,11 @@ const CreateAccountPageTwo = () => {
 
     // Simulate async delay
     setTimeout(() => {
-      return navigate('/Persona')
+      // Here is where the api will be called
       console.log(formData);
-      setLoading(false);
+      return navigate('/signUpcompleted')
+      
+      
     }, 2000);
   };
 
@@ -93,8 +98,7 @@ const CreateAccountPageTwo = () => {
                         required
                         value={formData.financialObligation}
                         onChange={handleChange}
-                      // value={type}
-                      // onChange={(e) => setType(e.target.value)}
+                     
                       >
                         <option value="Full-Time"></option>
                         <option value="Full-Time">Full-Time</option>
@@ -123,7 +127,7 @@ const CreateAccountPageTwo = () => {
 
                     <div className="flex flex-row justify-start mt-6">
                       <button
-                        type="submit"
+                         onClick={onClick}
                         className="flex text-white  font-medium px-6 py-2  justify-center"
                       >
                         <div className='flex flex-row justify-between'>
