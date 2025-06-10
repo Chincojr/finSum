@@ -5,7 +5,7 @@ import Spinner from '../component/Spinner';
 import logo from '../Assests/Frame 27.svg'
 import { FaAngleDoubleLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { Bell } from 'lucide-react'; 
+import { Bell } from 'lucide-react';
 import avatar from '../Assests/Rectangle.svg';
 
 const CreateAccountPageTwo = () => {
@@ -17,7 +17,7 @@ const CreateAccountPageTwo = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  
+
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -25,45 +25,45 @@ const CreateAccountPageTwo = () => {
       [e.target.name]: e.target.value,
     }));
   };
-   const onClick = () => {
+  const onClick = () => {
     return navigate('/')
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
 
     // Simulate async delay
     setTimeout(() => {
       // Here is where the api will be called
       console.log(formData);
       return navigate('/signUpcompleted')
-      
-      
+
+
     }, 2000);
   };
 
   return (
     <div className="flex h-screen">
-     
+
       <div className="flex flex-col flex-1">
-        
-        <nav className="h-[100px]  relative bg-white  px-6 flex items-center justify-between " 
-            
+
+        <nav className="h-[100px]  relative bg-white  px-6 flex items-center justify-between "
+
         >
           <div className="h-[100px] flex items-center px-3 pt-6">
             <img src={logo} alt="Finsum logo" className="h-8 w-auto" />
           </div>
-            <div className="flex items-center space-x-6 ">
-                <button className="relative text-gray-600 hover:text-gray-800 focus:outline-none">
-                    <Bell className="h-6 w-6"/>
-                </button>
-                <img 
-                    src={avatar}
-                    alt="User Avatar" 
-                    className="h-10 w-10 rounded-full object-cover border border-gray-300" />
-            </div>
+          <div className="flex items-center space-x-6 ">
+            <button className="relative text-gray-600 hover:text-gray-800 focus:outline-none">
+              <Bell className="h-6 w-6" />
+            </button>
+            <img
+              src={avatar}
+              alt="User Avatar"
+              className="h-10 w-10 rounded-full object-cover border border-gray-300" />
+          </div>
         </nav>
         {/* <Navbar /> */}
         <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
@@ -98,7 +98,7 @@ const CreateAccountPageTwo = () => {
                         required
                         value={formData.financialObligation}
                         onChange={handleChange}
-                     
+
                       >
                         <option value="Full-Time"></option>
                         <option value="Full-Time">Full-Time</option>
@@ -127,7 +127,7 @@ const CreateAccountPageTwo = () => {
 
                     <div className="flex flex-row justify-start mt-6">
                       <button
-                         onClick={onClick}
+                        onClick={onClick}
                         className="flex text-white  font-medium px-6 py-2  justify-center"
                       >
                         <div className='flex flex-row justify-between'>

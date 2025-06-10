@@ -27,7 +27,7 @@ function NavItem ({ to, label, icon }) {
 
 function Sidebar () {
     return (
-        <aside className="w-64 h-full bg-white border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between font-poppins">
+        <aside className="sticky top-0 w-64 h-full bg-white border-gray-200 pb-6 px-4 hidden md:flex flex-col justify-between font-poppins">
             <div className="space-y-8">
 
                 <div className="h-[100px] flex items-center px-3 pt-6">
