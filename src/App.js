@@ -6,6 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import CreateAccount from "./pages/CreateAccount";
 import CreateAccountPageTwo from "./pages/CreateAccountPageTwo";
 import SignUpCompletedPage from "./pages/SignUpCompletedPage";
+import MarketPage from "./pages/MarketPage";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
          <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/Persona" element={<PersonaPage />}/>
         <Route path="/Dashboard" element={<DashboardPage />} />
-        <Route path="/signUpcompleted" element={<SignUpCompletedPage />}/>
+        <Route path="/signUpcompleted" element={<SignUpCompletedPage />} />
+        <Route path="/market" element={<MarketPage />}/>
       </Routes>
     </Router>
   );

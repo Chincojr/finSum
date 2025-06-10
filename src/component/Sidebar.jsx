@@ -36,7 +36,7 @@ function Sidebar () {
 
                 <nav className="flex-1 space-y-7 pt-3">
                     <NavItem to="/persona" label="Persona" icon={PersonaIcon} />
-                    <NavItem to="/dashboard" label="Dashboard" icon={DashboardIcon} />
+                    <NavItem to="/Dashboard" label="Dashboard" icon={DashboardIcon} />
                     <NavItem to="/portfolio" label="Portfolio" icon={PortfolioIcon} />
                     <NavItem to="/market" label="Market" icon={MarketIcon} />
                     <NavItem to="/life-events" label="Life Events" icon={LifeEventsIcon} />
