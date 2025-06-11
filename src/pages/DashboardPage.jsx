@@ -10,11 +10,19 @@ import ChevronDownIcon from "../Assests/icons/arrow-right.svg";
 import NasdacLogo from "../Assests/icons/Ellipse 13.svg";
 import NasdacGraph from "../Assests/icons/Vector 2.svg";
 import ArrowRight from "../Assests/icons/arrow-square-right.svg";
+import LossIcon from "../Assests/icons/danger.svg";
+import AmazonLogo from "../Assests/icons/amazon-icon-1 1.svg";
+import MicrosoftLogo from "../Assests/icons/microsoft 2.svg";
+import WatchlistPlus from "../Assests/icons/Frame 1255.svg";
 
 function DashboardPage() {
     const [data, setData] = useState(null);
     const stockRefs = useRef([]);
     const [visibleStocks, setVisibleStocks] = useState([]);
+    const scrollBoxRef = useRef(null);
+    const [canScrollUp, setCanScrollUp] = useState(false);
+    const [canScrollDown, setCanScrollDown] = useState(false);
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -61,7 +69,34 @@ function DashboardPage() {
                     graph: <img src={graph} alt="graph" />
                 },
                 {
-                    name: "Nasdaq",
+                    name: "Nasdac.",
+                    invested: "8,000-",
+                    current: "35,750-",
+                    abbrevation: "NSDC",
+                    growth: "-17.63",
+                    logo: <img src={NasdacLogo} alt="logo" />,
+                    graph: <img src={NasdacGraph} alt="graph" />
+                },
+                {
+                    name: "Nasdac.",
+                    invested: "8,000-",
+                    current: "35,750-",
+                    abbrevation: "NSDC",
+                    growth: "-17.63",
+                    logo: <img src={NasdacLogo} alt="logo" />,
+                    graph: <img src={NasdacGraph} alt="graph" />
+                },
+                {
+                    name: "Nasdac.",
+                    invested: "8,000-",
+                    current: "35,750-",
+                    abbrevation: "NSDC",
+                    growth: "-17.63",
+                    logo: <img src={NasdacLogo} alt="logo" />,
+                    graph: <img src={NasdacGraph} alt="graph" />
+                },
+                {
+                    name: "Nasdac.",
                     invested: "8,000-",
                     current: "35,750-",
                     abbrevation: "NSDC",
@@ -71,17 +106,42 @@ function DashboardPage() {
                 },
             ],
             lifeEvents: [
-                { title: "Your Tesla stock just dropped by", source: "Tesla Inc.", change: "+7.12%" },
-                { title: "You just lost your job", source: "Loss", change: "-75.0%" },
+                { logo: <img src={TeslaLogo} />, title: "Your Tesla stock just dropped by", source: "Tesla Inc.", change: "+7.12%" },
+                { logo: <img src={LossIcon} />, title: "You just lost your job", source: "Loss", change: "-75.0%" },
             ],
             watchlist: [
-                { name: "Amazon.com, Inc.", code: "AMZN", price: "NGN 25,000", change: "+3.02" },
-                { name: "Nasdaq", code: "NSDC", price: "NGN 25,000", change: "-0.32" },
-                { name: "Microsoft Corp", code: "MSFT", price: "NGN 25,000", change: "+0.36" },
-                { name: "Nasdaq", code: "NSDC", price: "NGN 25,000", change: "+2.30" },
+                { logo: <img src={AmazonLogo} />, name: "Amazon.com, Inc.", code: "AMZN", price: "NGN 25,OOO", change: "+3.02" },
+                { logo: <img src={NasdacLogo} />, name: "Nasdac.", code: "NSDC", price: "NGN 25,OOO", change: "-0.32" },
+                { logo: <img src={MicrosoftLogo} />, name: "Microsoft Corp", code: "MSFT", price: "NGN 25,OOO", change: "+0.36" },
+                { logo: <img src={NasdacLogo} />, name: "Nasdac.", code: "NSDC", price: "NGN 25,OOO", change: "+2.30" },
+                { logo: <img src={NasdacLogo} />, name: "Nasdac.", code: "NSDC", price: "NGN 25,OOO", change: "+2.30" },
             ],
         });
     }, []);
+    useEffect(() => {
+        const scrollBox = scrollBoxRef.current;
+
+        const checkScroll = () => {
+            if (scrollBox) {
+                setCanScrollUp(scrollBox.scrollTop > 0);
+                setCanScrollDown(
+                    scrollBox.scrollTop + scrollBox.clientHeight < scrollBox.scrollHeight
+                );
+            }
+        };
+
+        if (scrollBox) {
+            scrollBox.addEventListener("scroll", checkScroll);
+            // Delay the initial check slightly
+            setTimeout(checkScroll, 100);
+        }
+
+        return () => {
+            if (scrollBox) scrollBox.removeEventListener("scroll", checkScroll);
+        };
+    }, [data]);
+
+
 
     if (!data) return <div className="text-center mt-32">Loading...</div>;
 
@@ -136,7 +196,7 @@ function DashboardPage() {
                                     <p className="text-sm text-center flex justify-center items-center rounded-lg bg-[#c7ffa5] 00 w-[30%]">{data.portfolioGrowth}</p>
                                 </div>
 
-                                <p className="mt-4 font-normal">Invested</p>
+                                <p className="mt-6 font-normal">Invested</p>
                                 <p className="text-lg font-medium p-4 rounded-xl mt-1 w-[100%] bg-black text-white inline-block">
                                     NGN {data.invested}
                                 </p>
@@ -147,29 +207,33 @@ function DashboardPage() {
                                         {/* Scrollable area */}
                                         <div
                                             id="stock-scroll-box"
+                                            ref={scrollBoxRef}
                                             className="max-h-[160px] overflow-y-auto pr-2 hide-scrollbar"
                                         >
+
                                             {data.stocks.map((stock, index) => (
                                                 <div
-
+                                                    key={index} // ✅ ADD this line
+                                                    data-index={index} // ✅ Needed for Intersection Observer
+                                                    ref={(el) => (stockRefs.current[index] = el)}
                                                 >
                                                     <div className="flex justify-between items-center px-3">
                                                         <div className="flex items-center">
                                                             <div>{stock.logo}</div>
-                                                            <p className="text-sm font-semibold">{stock.name}</p>
+                                                            <p className="ml-3 text-base font-medium">{stock.name}</p>
                                                         </div>
                                                         <div>
                                                             <p className="">{stock.abbrevation}</p>
-                                                            <p className="text-xs text-green-600">{stock.growth}</p>
+                                                            <p className="text-xs text-[#77B900]">{stock.growth}</p>
                                                         </div>
                                                     </div>
                                                     <div className="flex justify-between items-center mb-3 mt-5">
                                                         <div>
-                                                            <p className="text-xs text-gray-500">Invested Value</p>
+                                                            <p className="text-base text-gray-500">Invested Value</p>
                                                             <p>NGN {stock.invested}</p>
                                                         </div>
                                                         <div>
-                                                            <p className="text-xs text-gray-500">Current Value</p>
+                                                            <p className="text-base text-gray-500">Current Value</p>
                                                             <p>NGN {stock.current}</p>
                                                         </div>
                                                         <div>{stock.graph}</div>
@@ -185,10 +249,34 @@ function DashboardPage() {
                                     </div>
 
                                     {/* Scroll down indicator */}
-                                    <div className="flex justify-center mt-2">
-                                        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center animate-bounce">
-                                            <img src={ChevronDownIcon} alt="Scroll for more" className="w-4 h-4" />
-                                        </div>
+                                    <div className="flex justify-center mt-2 gap-2">
+                                        {/* Scroll Up */}
+                                        {canScrollUp && (
+                                            <button
+                                                onClick={() =>
+                                                    scrollBoxRef.current?.scrollBy({ top: -100, behavior: "smooth" })
+                                                }
+                                                className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700"
+                                            >
+                                                <img
+                                                    src={ChevronDownIcon}
+                                                    alt="Scroll up"
+                                                    className="w-4 h-4 rotate-180"
+                                                />
+                                            </button>
+                                        )}
+
+                                        {/* Scroll Down */}
+                                        {canScrollDown && (
+                                            <button
+                                                onClick={() =>
+                                                    scrollBoxRef.current?.scrollBy({ top: 100, behavior: "smooth" })
+                                                }
+                                                className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700"
+                                            >
+                                                <img src={ChevronDownIcon} alt="Scroll down" className="w-4 h-4" />
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -198,43 +286,68 @@ function DashboardPage() {
                         <div>
                             <p className="pb-4 font-poppins text-sm text-gray-400 font-normal">Life Events</p>
                             <div className="bg-white rounded-xl p-5 h-full">
-                                {data.lifeEvents.map((event, idx) => (
-                                    <div key={idx} className="mb-4">
-                                        <p className="text-sm font-semibold">{event.source}</p>
-                                        <p className="text-sm text-gray-600">{event.title}</p>
-                                        <p
-                                            className={`text-sm font-bold ${event.change.startsWith("-") ? "text-red-600" : "text-green-600"
-                                                }`}
-                                        >
-                                            {event.change}
-                                        </p>
+                                {data.lifeEvents.map((lifeEvent, idx) => (
+                                    <div key={idx} className="mb-4 flex items-center justify-between">
+                                        <div>
+                                            <div className="flex items-center">
+                                                <span>{lifeEvent.logo}</span>
+                                                <p className="text-base ml-2 font-medium">{lifeEvent.source}</p>
+                                            </div>
+                                            <p className="text-lg w-52">{lifeEvent.title}</p>
+                                        </div>
+                                        <div className="flex flex-col items-end mt-4">
+                                            <p className={`text-xl font-medium ${lifeEvent.change.startsWith("-") ? "text-red-600" : "text-green-600"}`}>
+                                                {lifeEvent.change}
+                                            </p>
+                                            <button
+                                                onClick={() => console.log(`Clicked on ${lifeEvent.source}`)}
+                                                className="w-8 h-8 mt-5  rounded-full hover:bg-gray-100"
+                                            >
+                                                <img src={ArrowRight} alt="Go to details" className="w-8 h-8" />
+                                            </button>
+                                        </div>
                                     </div>
-                                    
                                 ))}
                             </div>
+
                         </div>
 
                         {/* Watchlist */}
                         <div>
                             <p className="pb-4 font-poppins text-sm text-gray-400 font-normal invisible">Watchlist</p>
                             <div className="bg-white rounded-xl p-5 h-full">
-                                <p className="font-medium mb-4">Watchlist</p>
+                                <div className="flex justify-between">
+                                    <p className="font-normal mb-4">Watchlist</p>
+                                <button
+                                    onClick={() => console.log("Add new stock")}
+                                    className=  "flex justify-center items-center rounded-lg hover:bg-blue-700 hover:w-8 h-8"
+                                >
+                                    <img src={WatchlistPlus} alt="Add" className="" />
+                                </button>
+                                </div>
                                 {data.watchlist.map((item, idx) => (
-                                    <div key={idx} className="flex justify-between items-center mb-3">
-                                        <div>
-                                            <p className="text-sm font-semibold">{item.name}</p>
-                                            <p className="text-xs text-gray-400">{item.code}</p>
+                                    <div>
+                                        <div key={idx} className="flex justify-between items-center my-6">
+                                            <div className="flex items-center">
+                                                <span>{item.logo}</span>
+                                                <div className="ml-2">
+                                                    <p className="text-base font-normal">{item.name}</p>
+                                                    <p className="text-sm text-gray-400">{item.code}</p>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-base font-normal font-poppins">{item.price}</p>
+                                                <p
+                                                    className={`text-base ${item.change.startsWith("-") ? "text-red-600" : "text-green-600"
+                                                        }`}
+                                                >
+                                                    {item.change}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="text-right">
-                                            <p className="text-sm font-medium">{item.price}</p>
-                                            <p
-                                                className={`text-xs ${item.change.startsWith("-") ? "text-red-600" : "text-green-600"
-                                                    }`}
-                                            >
-                                                {item.change}
-                                            </p>
-                                        </div>
+                                        <div className="w-full h-px bg-gray-200"></div>
                                     </div>
+
                                 ))}
                             </div>
                         </div>
