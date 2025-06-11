@@ -14,6 +14,8 @@ import LossIcon from "../Assests/icons/danger.svg";
 import AmazonLogo from "../Assests/icons/amazon-icon-1 1.svg";
 import MicrosoftLogo from "../Assests/icons/microsoft 2.svg";
 import WatchlistPlus from "../Assests/icons/Frame 1255.svg";
+import LeaderboardChart from "../component/charts/LeaderboardChart";
+import MonthlyCashFlowChart from "../component/charts/MonthlyCashFlowChart";
 
 function DashboardPage() {
     const [data, setData] = useState(null);
@@ -146,11 +148,11 @@ function DashboardPage() {
     if (!data) return <div className="text-center mt-32">Loading...</div>;
 
     return (
-        <div className="flex min-h-screen font-poppins">
+        <div className="flex h-screen font-poppins">
             <Sidebar />
             <div className="flex-1 flex flex-col">
                 <Navbar />
-                <main className="flex flex-col bg-[#f8f9fc] px-6 py-4">
+                <main className="flex-1 flex flex-col overflow-y-auto bg-[#f8f9fc] px-6 py-4">
                     <p className="pb-4 font-poppins text-sm text-gray-400 font-normal">Persona Overview</p>
                     <div className="flex gap-6 mb-10 w-[100%]">
                         {/* Persona Overview */}
@@ -174,13 +176,13 @@ function DashboardPage() {
 
                         {/* Leaderboard & Graph (mocked) */}
                         <div className=" flex bg-white w-[100%] rounded-xl ">
-                            <div className="text-sm p-8 w-[30%] text-gray-400">
-                                Leaderboard
+                            <div className="p-6 w-[30%]">
+                                <LeaderboardChart />
                             </div>
-                            <div className="hidden md:block h-auto w-px bg-gray-200"></div>
-                            <div className=" text-sm p-8 text-gray-400">
-                                Monthly Cash Flow (Mock Line Chart)
+                            <div className="p-6 w-[70%]">
+                                <MonthlyCashFlowChart />
                             </div>
+
                         </div>
                     </div>
 
@@ -318,12 +320,12 @@ function DashboardPage() {
                             <div className="bg-white rounded-xl p-5 h-full">
                                 <div className="flex justify-between">
                                     <p className="font-normal mb-4">Watchlist</p>
-                                <button
-                                    onClick={() => console.log("Add new stock")}
-                                    className=  "flex justify-center items-center rounded-lg hover:bg-blue-700 hover:w-8 h-8"
-                                >
-                                    <img src={WatchlistPlus} alt="Add" className="" />
-                                </button>
+                                    <button
+                                        onClick={() => console.log("Add new stock")}
+                                        className="flex justify-center items-center rounded-lg hover:bg-blue-700 hover:w-8 h-8"
+                                    >
+                                        <img src={WatchlistPlus} alt="Add" className="" />
+                                    </button>
                                 </div>
                                 {data.watchlist.map((item, idx) => (
                                     <div>

@@ -28,6 +28,9 @@ function PersonaPage() {
                 { title: "Pay Tuition", due: "Due in a week" },
                 { title: "Pay Utilities", due: "Due in 2 weeks" },
                 { title: "Book Zanzibar tickets", due: "Due in 2 weeks" },
+                { title: "Book Zanzibar tickets", due: "Due in 2 weeks" },
+                { title: "Book Zanzibar tickets", due: "Due in 2 weeks" },
+                { title: "Book Zanzibar tickets", due: "Due in 2 weeks" },
             ],
         };
 
@@ -39,6 +42,9 @@ function PersonaPage() {
         "Pay Rent": HomeIcon,
         "Pay Tuition": SchoolIcon,
         "Pay Utilities": UtilityIcon,
+        "Book Zanzibar tickets": AirplaneIcon,
+        "Book Zanzibar tickets": AirplaneIcon,
+        "Book Zanzibar tickets": AirplaneIcon,
         "Book Zanzibar tickets": AirplaneIcon,
     };
 
