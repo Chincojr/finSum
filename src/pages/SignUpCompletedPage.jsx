@@ -15,7 +15,7 @@ const SignUpCompletedPage = () => {
     const timer = setTimeout(() => {
       setLoading(false);
       navigate('/Persona');
-    }, 4000);
+    }, 3000);
 
     return () => clearTimeout(timer); // Clean up timeout on unmount
   }, [navigate]);
