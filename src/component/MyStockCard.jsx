@@ -2,7 +2,7 @@
 import SparklineChart from "./charts/LineChart";
 
 
-export default function MyStockCard({ logo, symbol, name, price, chartData }) {
+export default function MyStockCard({ logo, symbol, name, price, chartData, bgColor }) {
     const firstValue = chartData[0]?.value || 0;
     const lastValue = chartData[chartData.length - 1]?.value || 0;
     const change = firstValue === 0 ? 0 : ((lastValue - firstValue) / firstValue) * 100;
@@ -11,7 +11,7 @@ export default function MyStockCard({ logo, symbol, name, price, chartData }) {
 
 
     return (
-        <div className="bg-[#A6F7E2] rounded-xl py-4 px-3 w-[22%]">
+        <div className={`${bgColor} rounded-xl py-4 px-3 min-w-[22%]`}>
             {/* Left */}
             <div className="flex justify-between">
                 <div className="flex items-center">
