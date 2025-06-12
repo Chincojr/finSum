@@ -11,24 +11,28 @@ export default function MyStockCard({ logo, symbol, name, price, chartData }) {
 
 
     return (
-        <div className="bg-[#A6F7E2] rounded-xl py-4 px-5 flex justify-between items-center w-full max-w-md">
+        <div className="bg-[#A6F7E2] rounded-xl py-4 px-3 w-[22%]">
             {/* Left */}
-            <div>
+            <div className="flex justify-between">
                 <div className="flex items-center">
                     <img src={logo} alt={`${name} logo`} className="w-8 h-8 " />
-                    <p className="text-lg font-medium">{name}</p>
+                    <p className="text-lg font-medium pl-4">{name}</p>
                 </div>
-                <p className="mt-5 text-xs">Current Value</p>
-                <p className="text-md font-semibold text-gray-700 mt-2">NGN {price}</p>
+                <div className="flex items-center flex-col">
+                    <h3 className="text-sm font-semibold text-gray-500">{symbol}</h3>
+                    <p className="text-sm font-semibold" style={{ color: changeColor }}>
+                        {change >= 0 ? "+" : ""}
+                        {change.toFixed(2)}%
+                    </p>
+                </div>
             </div>
 
             {/* Right */}
-            <div className="text-right">
-                <h3 className="text-sm font-semibold text-gray-500">{symbol}</h3>
-                <p className="text-sm font-semibold" style={{ color: changeColor }}>
-                    {change >= 0 ? "+" : ""}
-                    {change.toFixed(2)}%
-                </p>
+            <div className="flex justify-between items-end">
+                <div className="">
+                    <p className="mt-5 text-xs">Current Value</p>
+                    <p className="text-md font-semibold text-gray-700 mt-2">NGN {price}</p>
+                </div>
 
                 <div className="w-32 h-12">
                     <SparklineChart data={chartData} />

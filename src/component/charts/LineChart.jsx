@@ -38,6 +38,7 @@ export default function SparklineChart({ data }) {
                     strokeWidth={2}
                     fill={`url(#${gradientId})`}
                     dot={false}
+                    // margin={{ top:0, right:0, left: 0, bottom: 0 }}
                 />
             </AreaChart>
         </ResponsiveContainer>

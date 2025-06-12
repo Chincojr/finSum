@@ -152,7 +152,7 @@ function DashboardPage() {
             <Sidebar />
             <div className="flex-1 flex flex-col">
                 <Navbar />
-                <main className="flex-1 flex flex-col overflow-y-auto bg-[#f8f9fc] px-6 py-4">
+                <main className="flex-1 flex flex-col overflow-y-auto bg-[#f8f9fc] px-8 pt-4">
                     <p className="pb-4 font-poppins text-sm text-gray-400 font-normal">Persona Overview</p>
                     <div className="flex gap-6 mb-10 w-[100%]">
                         {/* Persona Overview */}
