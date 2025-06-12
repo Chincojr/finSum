@@ -176,10 +176,16 @@ function DashboardPage() {
 
                         {/* Leaderboard & Graph (mocked) */}
                         <div className=" flex bg-white w-[100%] rounded-xl ">
-                            <div className="p-6 w-[30%]">
-                                <LeaderboardChart />
+                            <div className="p-6 items-center flex flex-col w-[25%]">
+                                <p className="text-left ml-[-55px] text-sm text-gray-400 font-normal">Leaderboard</p>
+                                {/* <LeaderboardChart /> */}
+                                <div>
+                                    <div className="mt-5 w-40 h-40 bg-[#EDA60080] border-1 border-[#FF9900] rounded-full"></div>
+                                </div>
                             </div>
-                            <div className="p-6 w-[70%]">
+                            <div className="hidden md:block h-auto w-px bg-gray-200"></div>
+                            <div className="p-6  w-[75%]">
+                                <p className="text-sm text-gray-400 font-normal mb-5">Monthly cash flow</p>
                                 <MonthlyCashFlowChart />
                             </div>
 

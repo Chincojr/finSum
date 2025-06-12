@@ -13,14 +13,14 @@ const data = [
 
 export default function MonthlyCashFlowChart() {
   return (
-    <LineChart width={400} height={200} data={data}>
+    <LineChart width={750} height={200} data={data}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="income" stroke="#8884d8" />
-      <Line type="monotone" dataKey="expense" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="income" stroke="#7987FF" />
+      <Line type="monotone" dataKey="expense" stroke="#FFA5CB" />
     </LineChart>
   );
 }
