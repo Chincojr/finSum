@@ -193,7 +193,7 @@ function DashboardPage() {
                     </div>
 
                     {/* Portfolio + Life Events + Watchlist */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 flex-grow min-h-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6  flex-grow min-h-0">
                         {/* Portfolio */}
                         <div>
                             <p className="pb-4 font-poppins text-sm text-gray-400 font-normal">Portfolio</p>
