@@ -8,6 +8,7 @@ import CreateAccountPageTwo from "./pages/CreateAccountPageTwo";
 import SignUpCompletedPage from "./pages/SignUpCompletedPage";
 import MarketPage from "./pages/MarketPage";
 import PortfolioPage from "./pages/PortfolioPage";
+import StockInformationPage from "./pages/StockInformationPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/signUpcompleted" element={<SignUpCompletedPage />} />
         <Route path="/market" element={<MarketPage />}/>
         <Route path="/Portfolio" element={<PortfolioPage />}/>
+        <Route path="/Stock Information" element={<StockInformationPage />}/>
       </Routes>
     </Router>
   );
