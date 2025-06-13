@@ -6,6 +6,7 @@ import MyStockCard from '../component/MyStockCard';
 import MetaLogo from "../Assests/icons/meta.svg";
 import TeslaLogo from "../Assests/icons/tesla-motors-1 1.svg";
 import ArrowRight from "../Assests/icons/arrowright.svg";
+import { LineChart, Line, ResponsiveContainer } from "recharts";
 
 export default function PortfolioPage() {
     const scrollRef = useRef(null);
@@ -19,25 +20,25 @@ export default function PortfolioPage() {
             name: "Meta",
             logo: MetaLogo,
             symbol: "META",
-            price: 30000,
+            price: "30,000",
             chartData:
-            [
-                { name: "1", value: 45 },
-                { name: "2", value: 50 },
-                { name: "3", value: 47 },
-                { name: "4", value: 60 },
-                { name: "5", value: 58 },
-                { name: "6", value: 63 },
-                { name: "7", value: 70 },
-            ],
+                [
+                    { name: "1", value: 45 },
+                    { name: "2", value: 50 },
+                    { name: "3", value: 47 },
+                    { name: "4", value: 60 },
+                    { name: "5", value: 58 },
+                    { name: "6", value: 63 },
+                    { name: "7", value: 70 },
+                ],
         },
 
 
         {
             name: "Tesla Inc.",
-            logo: TeslaLogo, 
+            logo: TeslaLogo,
             symbol: "TSLA",
-            price: 23145,
+            price: '23,145',
             chartData:
                 [
                     { name: "1", value: 70 },
@@ -60,11 +61,11 @@ export default function PortfolioPage() {
                     { name: "7", value: 27 },
                     { name: "7", value: 65 },
                     { name: "7", value: 40 },
-                                ],
-            },
+                ],
+        },
         {
             name: "Tesla Inc.",
-            logo: TeslaLogo, 
+            logo: TeslaLogo,
             symbol: "TSLA",
             price: 23145,
             chartData:
@@ -89,11 +90,11 @@ export default function PortfolioPage() {
                     { name: "7", value: 27 },
                     { name: "7", value: 65 },
                     { name: "7", value: 40 },
-                                ],
-            },
+                ],
+        },
         {
             name: "Tesla Inc.",
-            logo: TeslaLogo, 
+            logo: TeslaLogo,
             symbol: "TSLA",
             price: 23145,
             chartData:
@@ -118,11 +119,11 @@ export default function PortfolioPage() {
                     { name: "7", value: 27 },
                     { name: "7", value: 65 },
                     { name: "7", value: 40 },
-                                ],
-            },
+                ],
+        },
         {
             name: "Tesla Inc.",
-            logo: TeslaLogo, 
+            logo: TeslaLogo,
             symbol: "TSLA",
             price: 23145,
             chartData:
@@ -147,11 +148,11 @@ export default function PortfolioPage() {
                     { name: "7", value: 27 },
                     { name: "7", value: 65 },
                     { name: "7", value: 40 },
-                                ],
-            },
+                ],
+        },
         {
             name: "Tesla Inc.",
-            logo: TeslaLogo, 
+            logo: TeslaLogo,
             symbol: "TSLA",
             price: 23145,
             chartData:
@@ -176,9 +177,9 @@ export default function PortfolioPage() {
                     { name: "7", value: 27 },
                     { name: "7", value: 65 },
                     { name: "7", value: 40 },
-                                ],
-            },
-        ];
+                ],
+        },
+    ];
 
 
     const bgColors = ["bg-[#A6F7E2]", "bg-[#B79BFF]", "bg-[#FFE5A5]", "bg-[#C7FFA5]", "bg-[#F8A5FF]"];
@@ -278,7 +279,7 @@ export default function PortfolioPage() {
                             />
                         </button>
 
-                        <div ref={scrollRef}  className="flex gap-4 overflow-x-auto bg-white px-3 py-5 rounded-xl whitespace-nowrap hide-scrollbar">
+                        <div ref={scrollRef} className="flex gap-4 overflow-x-auto bg-white px-3 py-5 rounded-xl whitespace-nowrap hide-scrollbar">
                             {stocks.map((stock, index) => (
                                 <MyStockCard
                                     key={index}
@@ -312,6 +313,57 @@ export default function PortfolioPage() {
                                 className="w-12 h-12"
                             />
                         </button>
+                    </div>
+
+                    <p className='text-sm pb-4 text-gray-400 font-normal'>P&L</p>
+
+                    <div className="flex justify-between items-center">
+                        {/* Tesla P&L */}
+                        <div className='flex  justify-between w-[80%] bg-white rounded-lg p-4'>
+                            <div className=" p-4 flex flex-col gap-2">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                        <img src="/tesla.png" alt="Tesla" className="w-6 h-6" />
+                                        <p className="font-semibold">Tesla Inc.</p>
+                                    </div>
+                                    <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">✓</span>
+                                </div>
+                                <p className="text-2xl font-bold text-black">NGN 77,000.00</p>
+                                <p className="text-sm text-green-600 font-medium">
+                                    +9.02% <span className="text-gray-400">24h</span>
+                                </p>
+                            </div>
+
+                            {/* Profit */}
+                            <div className='flex w-[50%] gap-4 '>
+                                <div className="p-4 border-[#77B90054] rounded-lg border w-[50%]">
+                                    <p className="text-sm text-gray-500">Profit</p>
+                                    <p className="text-xl font-semibold text-black">NGN 16,300</p>
+                                    <p className="text-sm text-red-500">↓ -6.36%</p>
+                                </div>
+                                <div className='p-4 border-[#FF2F2F42] rounded-lg border w-[50%]'>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {/* Total Assets */}
+                        <div className="bg-white p-4 rounded-xl shadow-sm">
+                            <p className="text-sm text-gray-500">Total Assets Value</p>
+                            <div className="flex justify-between items-center mt-1">
+                                <div className="h-12 w-20">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <LineChart data={[{ value: 100 }, { value: 110 }, { value: 90 }, { value: 120 }]}>
+                                            <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={2} />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div>
+                                    <p className="text-lg font-semibold text-black">NGN 136,650</p>
+                                    <p className="text-sm text-red-500">-2.16%</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </main>
             </div>
