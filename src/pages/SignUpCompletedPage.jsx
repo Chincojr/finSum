@@ -9,7 +9,7 @@ import completeLogo from '../Assests/Variant8.svg';
 const SignUpCompletedPage = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-// Automatically navigate after 3 seconds
+
   useEffect(() => {
     
     const timer = setTimeout(() => {
@@ -17,7 +17,7 @@ const SignUpCompletedPage = () => {
       navigate('/Persona');
     }, 3000);
 
-    return () => clearTimeout(timer); // Clean up timeout on unmount
+    return () => clearTimeout(timer);
   }, [navigate]);
 
   return (

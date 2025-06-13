@@ -48,7 +48,6 @@ function DashboardPage() {
     }, []);
 
     useEffect(() => {
-        //Mock data for now
         setData({
             user: {
                 name: "Adesare Olugbagi",
@@ -134,7 +133,6 @@ function DashboardPage() {
 
         if (scrollBox) {
             scrollBox.addEventListener("scroll", checkScroll);
-            // Delay the initial check slightly
             setTimeout(checkScroll, 100);
         }
 
@@ -221,8 +219,8 @@ function DashboardPage() {
 
                                             {data.stocks.map((stock, index) => (
                                                 <div
-                                                    key={index} // ✅ ADD this line
-                                                    data-index={index} // ✅ Needed for Intersection Observer
+                                                    key={index} 
+                                                    data-index={index} 
                                                     ref={(el) => (stockRefs.current[index] = el)}
                                                 >
                                                     <div className="flex justify-between items-center px-3">

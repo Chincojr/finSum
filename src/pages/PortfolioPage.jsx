@@ -9,7 +9,7 @@ import ArrowRight from "../Assests/icons/arrowright.svg";
 import ArrowDown from "../Assests/icons/arrow-right2.svg";
 import ArrowDownUp from "../Assests/icons/frame.svg";
 import NasdaqLogo from "../Assests/icons/Ellipse 13.svg";
-// import TeslaLogo from "../Assests/icons/tesla-motors-1 1.svg"
+
 const mockStocks = [
     {
         logo: NasdaqLogo,
@@ -35,7 +35,6 @@ const mockStocks = [
         change24h: "+0.52%",
         change7d: "-0.10%",
     },
-    // Add more mock data as needed
 ];
 
 
@@ -221,7 +220,7 @@ export default function PortfolioPage() {
         isVerified: true,
         totalValue: "77,000.00",
         change24h: "↑ +9.02%",
-        change24hType: "up", // or "down"
+        change24hType: "up",
         profit: {
             amount: "NGN 16,300",
             change: "-6.36%",
@@ -275,14 +274,6 @@ export default function PortfolioPage() {
     };
 
 
-    // const handleScroll = () => {
-    //     const el = scrollRef.current;
-    //     if (!el) return;
-
-    //     const isAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
-    //     setIsScrolledToEnd(isAtEnd);
-    // };
-
     useEffect(() => {
         const el = scrollRef.current;
         if (!el) return;
@@ -302,7 +293,7 @@ export default function PortfolioPage() {
         if (!el) return;
 
         el.addEventListener('scroll', handleScroll);
-        handleScroll(); // initial check
+        handleScroll(); 
 
         return () => el.removeEventListener('scroll', handleScroll);
     }, []);
@@ -317,20 +308,15 @@ export default function PortfolioPage() {
 
     return (
         <div className="flex h-screen bg-gray-50 font-poppins">
-            {/* Sidebar */}
             <Sidebar />
 
-            {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Navbar */}
                 <Navbar />
 
-                {/* Page Content */}
                 <main className=" overflow-auto bg-gray-50 px-8 pt-4">
 
                     <h1 className="text-sm pb-4 text-gray-400 font-normal">My Stock</h1>
                     <div className="relative">
-                        {/* Left Arrow Button */}
                         <div
                             className={`pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent rounded-xl transition-opacity duration-300 ${isScrolledToStart ? 'opacity-0' : 'opacity-100'
                                 }`}
