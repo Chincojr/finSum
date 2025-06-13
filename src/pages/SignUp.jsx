@@ -13,7 +13,7 @@ function SignUp() {
     };
 
     const handleNext = () => {
-        console.log(form); //just logging for now
+        console.log(form); 
     };
 
     return (

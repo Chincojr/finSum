@@ -3,7 +3,7 @@ import FormField from '../component/FormField';
 import Spinner from '../component/Spinner';
 import logo from '../Assests/Frame 27.svg';
 import { FaAngleDoubleRight } from 'react-icons/fa';
-import { Bell } from 'lucide-react'; 
+import { Bell } from 'lucide-react';
 import avatar from '../Assests/Rectangle.svg'
 import { useNavigate } from 'react-router-dom';
 
@@ -33,28 +33,28 @@ const CreateAccount = () => {
       // Here is where the api will be called
       console.log(formData);
       return navigate('/completeSignUp');
-      
+
     }, 2000);
   };
 
   return (
     <div className="flex h-screen">
       <div className="flex flex-col flex-1">
-        <nav className="h-[100px]  relative bg-white  px-6 flex items-center justify-between " 
-            
+        <nav className="h-[100px]  relative bg-white  px-6 flex items-center justify-between "
+
         >
           <div className="h-[100px] flex items-center px-3 pt-6">
             <img src={logo} alt="Finsum logo" className="h-8 w-auto" />
           </div>
-            <div className="flex items-center space-x-6 ">
-                <button className="relative text-gray-600 hover:text-gray-800 focus:outline-none">
-                    <Bell className="h-6 w-6"/>
-                </button>
-                <img 
-                    src={avatar}
-                    alt="User Avatar" 
-                    className="h-10 w-10 rounded-full object-cover border border-gray-300" />
-            </div>
+          <div className="flex items-center space-x-6 ">
+            <button className="relative text-gray-600 hover:text-gray-800 focus:outline-none">
+              <Bell className="h-6 w-6" />
+            </button>
+            <img
+              src={avatar}
+              alt="User Avatar"
+              className="h-10 w-10 rounded-full object-cover border border-gray-300" />
+          </div>
         </nav>
         <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
           <div className="w-full max-w-xl">

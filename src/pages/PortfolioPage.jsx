@@ -7,7 +7,36 @@ import MetaLogo from "../Assests/icons/meta.svg";
 import TeslaLogo from "../Assests/icons/tesla-motors-1 1.svg";
 import ArrowRight from "../Assests/icons/arrowright.svg";
 import ArrowDown from "../Assests/icons/arrow-right2.svg";
-// import TeslaLogo from "../Assests/icons/tesla-motors-1 1.svg"
+import ArrowDownUp from "../Assests/icons/frame.svg";
+import NasdaqLogo from "../Assests/icons/Ellipse 13.svg";
+
+const mockStocks = [
+    {
+        logo: NasdaqLogo,
+        name: "NASDAQ",
+        symbol: "NSDQ",
+        price: "NGN 32,000.00",
+        change24h: "+0.37%",
+        change7d: "-0.08%",
+    },
+    {
+        logo: TeslaLogo,
+        name: "Tesla",
+        symbol: "TSLA",
+        price: "NGN 32,000.00",
+        change24h: "+0.37%",
+        change7d: "-0.08%",
+    },
+    {
+        logo: MetaLogo,
+        name: "Meta",
+        symbol: "META",
+        price: "NGN 25,000.00",
+        change24h: "+0.52%",
+        change7d: "-0.10%",
+    },
+];
+
 
 export default function PortfolioPage() {
     const scrollRef = useRef(null);
@@ -191,7 +220,7 @@ export default function PortfolioPage() {
         isVerified: true,
         totalValue: "77,000.00",
         change24h: "↑ +9.02%",
-        change24hType: "up", // or "down"
+        change24hType: "up",
         profit: {
             amount: "NGN 16,300",
             change: "-6.36%",
@@ -245,14 +274,6 @@ export default function PortfolioPage() {
     };
 
 
-    // const handleScroll = () => {
-    //     const el = scrollRef.current;
-    //     if (!el) return;
-
-    //     const isAtEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
-    //     setIsScrolledToEnd(isAtEnd);
-    // };
-
     useEffect(() => {
         const el = scrollRef.current;
         if (!el) return;
@@ -272,27 +293,30 @@ export default function PortfolioPage() {
         if (!el) return;
 
         el.addEventListener('scroll', handleScroll);
-        handleScroll(); // initial check
+        handleScroll(); 
 
         return () => el.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const filteredStocks = mockStocks.filter(
+        (stock) =>
+            stock.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            stock.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="flex h-screen bg-gray-50 font-poppins">
-            {/* Sidebar */}
             <Sidebar />
 
-            {/* Main content */}
             <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Navbar */}
                 <Navbar />
 
-                {/* Page Content */}
                 <main className=" overflow-auto bg-gray-50 px-8 pt-4">
 
                     <h1 className="text-sm pb-4 text-gray-400 font-normal">My Stock</h1>
                     <div className="relative">
-                        {/* Left Arrow Button */}
                         <div
                             className={`pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-white to-transparent rounded-xl transition-opacity duration-300 ${isScrolledToStart ? 'opacity-0' : 'opacity-100'
                                 }`}
@@ -348,7 +372,7 @@ export default function PortfolioPage() {
 
                     <p className='text-sm pb-4 text-gray-400 font-normal mt-10'>P&L</p>
 
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-stretch gap-5">
                         {/* Tesla P&L */}
                         <div className="flex justify-between w-[80%] bg-white rounded-lg p-4">
                             <div className="p-4 flex flex-col gap-2">
@@ -359,7 +383,7 @@ export default function PortfolioPage() {
                                     </div>
                                     {mockPNL.isVerified && (
                                         // <span className="text-xs bg-gray-100 px-2 py-0.5 rounded">✓</span>
-                                        <img src={ArrowDown}/>
+                                        <img src={ArrowDown} alt='Arrow Down' className='ml-3' />
                                     )}
                                 </div>
                                 <p className="text-2xl font-bold text-black">
@@ -393,22 +417,71 @@ export default function PortfolioPage() {
                         </div>
 
                         {/* Total Assets */}
-                        <div className="bg-white p-4 rounded-xl shadow-sm h-full">
-                            <p className="text-sm text-gray-500">Total Assets Value</p>
-                            <div className="flex justify-between items-center mt-1">
-                                <div className="h-12 w-20">
-                                    
-                                </div>
-                                <div>
-                                    <p className="text-lg font-semibold text-black">
-                                        {mockPNL.totalAssets.value}
-                                    </p>
-                                    <p className="text-sm text-red-500">
-                                        {mockPNL.totalAssets.type === "down" ? "↓" : "↑"}{" "}
+                        <div className="bg-white p-4 rounded-xl shadow-sm flex justify-between flex-col w-[20%]">
+                            <p className="text-sm font-medium">Total Assets Value</p>
+                            <div className="h-12 w-12">
+                                <img src={ArrowDownUp} alt="" />
+                            </div>
+                            <div className='flex items-end justify-between'>
+                                <p className="text-2xl font-semibold text-black">
+                                    {mockPNL.totalAssets.value}
+                                </p>
+                                <div className='flex flex-col items-center'>
+                                    <p className="text-sm text-red-500 px-3 rounded-lg py-1 bg-[#F9DFDF]">
                                         {mockPNL.totalAssets.change}
                                     </p>
+                                    <p className='text-gray-400 text-sm'>A.T.L</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <h2 className="text-sm mt-10 font-normal text-gray-400">Trade</h2>
+                    
+                    <div className="bg-white mt-4 rounded-xl p-4 shadow-sm">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2></h2>
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                className="px-3 py-2 border border-gray-300 rounded-md text-sm w-60"
+                            />
+                        </div>
+
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-sm text-left">
+                                <thead>
+                                    <tr className="text-gray-500 border-b">
+                                        <th className="p-2 font-medium">Name</th>
+                                        <th className="p-2 font-medium">Price</th>
+                                        <th className="p-2 font-medium">Change 24h</th>
+                                        <th className="p-2 font-medium">Change 7d</th>
+                                        <th className="p-2 font-medium text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredStocks.map((stock) => (
+                                        <tr key={stock.symbol} className="border-b hover:bg-gray-50">
+                                            <td className="p-2 flex items-center gap-2">
+                                                <img src={stock.logo} alt={stock.name} className="w-6 h-6" />
+                                                <span>{stock.name}</span>
+                                            </td>
+                                            <td className="p-2">{stock.price}</td>
+                                            <td className="p-2 text-green-600">{stock.change24h}</td>
+                                            <td className="p-2 text-red-500">{stock.change7d}</td>
+                                            <td className="p-2 flex justify-end gap-2">
+                                                <button className="px-3 py-1 text-white bg-black rounded">Buy</button>
+                                                <button className="px-3 py-1 text-black border border-black rounded">Sell</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            {filteredStocks.length === 0 && (
+                                <p className="text-center text-gray-400 py-4">No results found.</p>
+                            )}
                         </div>
                     </div>
                 </main>
